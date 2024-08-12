@@ -1,5 +1,6 @@
 import random
 import math
+
 class Network:
     def __init__(self, numberOfNeurons = [], numberOfInputs = 10):
         self.numberOfNeurons = numberOfNeurons
