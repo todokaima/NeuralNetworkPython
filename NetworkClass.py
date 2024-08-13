@@ -56,7 +56,7 @@ class Network:
                 for value, weight in zip(input, neuron.weights[1:]):
                     neuronInteraction += value * weight
                 neuronInteraction += neuron.weights[0]  # Adding the bias
-                neuronActivation = math.tanh(neuronInteraction)
+                neuronActivation = tanh(neuronInteraction)
 
                 interactions.append(neuronInteraction)
                 activations.append(neuronActivation)
