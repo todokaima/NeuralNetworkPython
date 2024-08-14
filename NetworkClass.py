@@ -56,7 +56,7 @@ class Network:
                 for value, weight in zip(input, neuron.weights[1:]):
                     neuronInteraction += value * weight
                 neuronInteraction += neuron.weights[0]  
-                neuronActivation = tanh(neuronInteraction)
+                neuronActivation = math.tanh(neuronInteraction)
 
                 interactions.append(neuronInteraction)
                 activations.append(neuronActivation)
@@ -72,7 +72,7 @@ class Network:
                     neuronInteraction += value * weight
                 neuronInteraction += neuron.weights[0]
                 if self.Regressor:
-                    neuronActivation = tanh(neuronInteraction)
+                    neuronActivation = neuronInteraction
                 else:
                     neuronActivation = neuronInteraction
 
