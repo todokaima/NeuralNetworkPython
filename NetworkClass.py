@@ -49,13 +49,13 @@ class Network:
         if 0 <= level < self.numberOfLevels:
             interactions = []
             activations = []
-            current_level = self.levels[level]  # Get the specific level
+            current_level = self.levels[level]  
             for neuron in current_level.neurons:
                 neuronInteraction = 0
                 neuronActivation = 0
                 for value, weight in zip(input, neuron.weights[1:]):
                     neuronInteraction += value * weight
-                neuronInteraction += neuron.weights[0]  # Adding the bias
+                neuronInteraction += neuron.weights[0]  
                 neuronActivation = tanh(neuronInteraction)
 
                 interactions.append(neuronInteraction)
@@ -64,7 +64,7 @@ class Network:
                 self.activations.append(activations)
                 self.interactions.append(interactions)
         if level == self.numberOfLevels:
-            current_level = self.levels[level]  # Get the specific level
+            current_level = self.levels[level]  
             for neuron in current_level.neurons:
                 neuronInteraction = 0
                 neuronActivation = 0
@@ -112,8 +112,7 @@ class Network:
                 for k in range(len(self.levels[i].neurons[j].weights) - 1):
                     self.levels[i].neurons[j].weights[k + 1] -= self.learningRate * errors[i][j] * (
                         self.activations[i - 1][k] if i > 0 else input[k])
-                self.levels[i].neurons[j].weights[0] -= self.learningRate * errors[i][j]  # Update bias
-
+                self.levels[i].neurons[j].weights[0] -= self.learningRate * errors[i][j]  
     def train(self,input, target):
         self.clear()
         self.feedForward(input, target)
@@ -139,21 +138,20 @@ training_data = [
     ([1, 1], [0])
 ]
 
-# Print the network's initial state
+
 print("Initial Network:")
 print(network)
 
-# Train the network
+
 epochs = 10000
 for epoch in range(epochs):
     for input_data, target in training_data:
         network.train(input_data, target)
 
-# Print the network's final state
 print("Final Network:")
 print(network)
 
-# Test the network on the training data
+
 print("Network Output after Training:")
 for input_data, target in training_data:
     output = network.feedForward(input_data, target)
@@ -166,9 +164,7 @@ network.weights(2)"""
 
 import matplotlib.pyplot as plt
 
-# Assume the Network class is defined here as you have provided.
 
-# Function to generate noisy sine wave data
 def generate_data(samples=100, noise=0.1):
     data = []
     for i in range(samples):
@@ -177,20 +173,18 @@ def generate_data(samples=100, noise=0.1):
         data.append(([x], [y]))
     return data
 
-# Initialize the network with 1 input, one hidden layer with 10 neurons, and 1 output neuron
 network = Network([10], numberOfInputs=1, learningRate=0.01)
 
-# Generate training data
+
 training_data = generate_data(samples=100, noise=0.1)
 
-# Train the network
+
 epochs = 10000
 for epoch in range(epochs):
     for input_data, target in training_data:
         network.train(input_data, target)
 
-# Test the network
-test_data = generate_data(samples=50, noise=0.0)  # Test without noise
+test_data = generate_data(samples=50, noise=0.0)  
 
 inputs = [x[0][0] for x in test_data]
 targets = [x[1][0] for x in test_data]
@@ -200,7 +194,7 @@ for input_data, target in test_data:
     output = network.feedForward(input_data, target)
     predictions.append(output[0])
 
-# Plot the results
+
 plt.plot(inputs, targets, 'bo', label='Target')
 plt.plot(inputs, predictions, 'ro', label='Prediction')
 plt.xlabel('Input')
