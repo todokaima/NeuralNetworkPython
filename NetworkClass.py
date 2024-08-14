@@ -130,7 +130,6 @@ class Network:
 
 network = Network([2], numberOfInputs=2, learningRate=0.5)
 
-# XOR training data
 training_data = [
     ([0, 0], [0]),
     ([0, 1], [1]),
@@ -157,10 +156,6 @@ for input_data, target in training_data:
     output = network.feedForward(input_data, target)
     print(f"Input: {input_data}, Target: {target}, Output: {output}")
 
-
-"""network = Network([5,2,3])
-print(network)
-network.weights(2)"""
 
 import matplotlib.pyplot as plt
 
