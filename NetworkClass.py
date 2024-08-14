@@ -127,7 +127,7 @@ class Network:
             for neuron in level.neurons:
                 result.append(f"  Weights: {neuron.weights[1:]}, Bias: {neuron.weights[0]}")
         return "\n".join(result)+"\n"
-
+"""testing examples"""
 
 network = Network([2], numberOfInputs=2, learningRate=0.5)
 
